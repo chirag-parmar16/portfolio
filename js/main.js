@@ -246,7 +246,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Identity Hero Animation ---
-    const roles = ["Full Stack Engineer", "AI Enthusiast"];
+    const roles = [
+        "Full Stack Developer",
+        "Logic-Driven Developer",
+        "BCA Student"
+    ];
+
     let roleTl = gsap.timeline({ repeat: -1 });
     roles.forEach(role => {
         roleTl.to("#dynamicRole", { duration: 1, text: role, ease: "none" })
