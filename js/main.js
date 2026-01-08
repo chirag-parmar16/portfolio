@@ -199,6 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Re-refresh ScrollTrigger if needed, but display changes might handle it.
             ScrollTrigger.refresh();
+
+            // Scroll to start of projects to avoid "merging" or layout jumps
+            gsap.to(window, { duration: 0.5, scrollTo: { y: "#section-heading", offsetY: 80 } });
         });
     });
 
