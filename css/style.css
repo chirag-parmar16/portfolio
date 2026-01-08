@@ -364,6 +364,11 @@ ul { list-style: none; }
     .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .hero-text { align-items: center; }
     
+    /* Typography Scaling */
+    .hero-title { font-size: 2.5rem; line-height: 1.2; margin-bottom: 20px; }
+    .hero-desc { font-size: 1.1rem; margin-bottom: 32px; max-width: 100%; }
+    .label-pill { margin-bottom: 16px; font-size: 0.75rem; }
+    
     /* Reset Transform & Auto Height for Mobile */
     .hero-window { 
         margin: 0 auto; max-width: 100%; height: auto; min-height: 250px;
