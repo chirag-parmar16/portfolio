@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chirag Parmar | Full Stack Engineer</title>
+    <meta name="description" content="Portfolio of Chirag Parmar. Cinematic Developer Landing Page.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <!-- Terminal Loader -->
+    <div class="boot-screen" id="terminalLoader">
+        <div class="console">
+            <span class="cursor">></span> <span class="text" id="terminalText"></span>
+        </div>
+    </div>
+
+    <!-- Ambient Background Glows -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand">CP<span class="dot">_</span></a>
+            <div class="nav-right">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#section-heading" class="nav-link">Projects</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+            <div class="float-shape shape-1"></div>
+            <div class="float-shape shape-2"></div>
+            <div class="container hero-grid">
+                <!-- Left: Text -->
+                <div class="hero-text">
+                    <div class="label-pill">AVAILABLE FOR HIRE</div>
+                    <h1 class="hero-title">
+                        Building the <br> <span class="gradient-text">Digital Reality.</span>
+                    </h1>
+                    <p class="hero-desc">
+                        I am Chirag Parmar. A Full Stack Engineer crafting precise, high-performance web applications with modern architecture.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#work" class="btn btn-primary">View Selected Work</a>
+                        <a href="https://github.com/chirag-parmar16/" class="btn btn-line">GitHub Profile</a>
+                    </div>
+                </div>
+
+                <!-- Right: Visual -->
+                <div class="hero-visual">
+                    <div class="hero-window">
+                        <div class="window-header">
+                            <span class="dots" style="background: #38bdf8; box-shadow: 10px 0 #38bdf8, 20px 0 #38bdf8;"></span>
+                        </div>
+                        <div class="window-body">
+                            <p style="color: var(--text-sec);">// System Identity_</p>
+                            <br>
+                            <p>> User: <span style="color: var(--text-main);">Chirag Parmar</span></p>
+                            <p>> Role: <span style="color: var(--text-main);">Full Stack Engineer</span></p>
+                            <p>> Location: <span style="color: var(--text-main);">Vadodara, IN</span></p>
+                            <br>
+                            <p>> Status: <span style="color: #22c55e;">Online_</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Showcase -->
+        <section class="work-section" id="work">
+            <div class="container">
+                <h2 class="section-heading" id="section-heading">Featured Projects</h2>
+                <div class="project-tabs" id="project-tabs">
+                    <button class="tab-btn active" data-filter="fullstack">Full Stack</button>
+                    <button class="tab-btn" data-filter="frontend">Frontend</button>
+                    <button class="tab-btn" data-filter="ai">AI Experiment</button>
+                </div>
+                
+                <!-- Project 1: CineArc -->
+                <article class="project-feature" id="first-project" data-category="fullstack">
+                    <div class="project-text">
+                        <span class="p-num">01</span>
+                        <h3 class="p-title">CineArc</h3>
+                        <p class="p-desc">
+                            A comprehensive movie booking platform engineered for scale. Features real-time seat mapping, secure user authentication, and a robust admin dashboard for theatre management.
+                        </p>
+                        <ul class="p-tags">
+                            <li>PHP</li><li>MySQL</li><li>Architecture</li>
+                        </ul>
+                        <div class="p-link">Full Stack Project</div>
+                        <a href="https://github.com/chirag-parmar16/CineArc" target="_blank" class="btn btn-sm btn-line">Source Code</a>
+                    </div>
+                    <div class="project-visual visual-cinearc">
+                        <div class="mockup-window">
+                            <div class="window-header"><span class="dots"></span></div>
+                            <div class="window-body">
+                                <img src="assets/images/cinearc.png" alt="CineArc Dashboard" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2: Travel (Reverse) -->
+                <article class="project-feature reverse" data-category="fullstack">
+                    <div class="project-text">
+                        <span class="p-num">02</span>
+                        <h3 class="p-title">Travel Portal</h3>
+                        <p class="p-desc">
+                            Backend-heavy booking system handling complex scheduling logic. Includes simulated payment gateways, dynamic receipt generation, and data integrity verification.
+                        </p>
+                        <ul class="p-tags">
+                            <li>Backend Logic</li><li>Data Security</li>
+                        </ul>
+                         <div class="p-link">Full Stack Project</div>
+                         <a href="https://github.com/chirag-parmar16/traveller" target="_blank" class="btn btn-sm btn-line">Source Code</a>
+                    </div>
+                    <div class="project-visual visual-travel">
+                        <div class="mockup-window">
+                            <div class="window-header"><span class="dots"></span></div>
+                            <div class="window-body">
+                                <img src="assets/images/tarvel.png" alt="Travel Portal" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3: Smart Living -->
+                <article class="project-feature" data-category="frontend">
+                    <div class="project-text">
+                        <span class="p-num">03</span>
+                        <h3 class="p-title">Smart Living</h3>
+                        <p class="p-desc">
+                            Modern dashboard interface for Smart Society management. Streamlines facility booking, food ordering, and maintenance requests in a unified UI.
+                        </p>
+                        <ul class="p-tags">
+                            <li>Dashboard UI</li><li>JavaScript</li>
+                        </ul>
+                         <div class="p-link">Frontend Project</div>
+                         <a href="https://github.com/chirag-parmar16/smart-living-ESociety" target="_blank" class="btn btn-sm btn-line">Source Code</a>
+                    </div>
+                    <div class="project-visual visual-smart">
+                        <div class="mockup-window">
+                            <div class="window-header"><span class="dots"></span></div>
+                            <div class="window-body">
+                                <img src="assets/images/samrt-living.png" alt="Smart Living Dashboard" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                 <!-- Project 4: MangaHub (Reverse) -->
+                 <article class="project-feature reverse" data-category="frontend">
+                    <div class="project-text">
+                        <span class="p-num">04</span>
+                        <h3 class="p-title">MangaHub</h3>
+                        <p class="p-desc">
+                            High-performance E-Commerce library for digital content. Features optimized search algorithms, responsive grid layouts, and cart state management.
+                        </p>
+                        <ul class="p-tags">
+                            <li>E-Commerce</li><li>Search Algo</li>
+                        </ul>
+                         <div class="p-link">Frontend Project</div>
+                         <a href="https://github.com/Sanji1305/Manga-Hub-001" target="_blank" class="btn btn-sm btn-line">Source Code</a>
+                    </div>
+                    <div class="project-visual visual-manga">
+                        <div class="mockup-window">
+                            <div class="window-header"><span class="dots"></span></div>
+                            <div class="window-body">
+                                <img src="assets/images/manga-hub.png" alt="MangaHub Store" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 5: Pokemon Simulation -->
+                <article class="project-feature" data-category="ai">
+                    <div class="project-text">
+                        <span class="p-num">05</span>
+                        <h3 class="p-title">Pokemon Simulation</h3>
+                        <p class="p-desc">
+                            Interactive battle simulation engine featuring real-time damage calculation, type effectiveness logic, and dynamic state management.
+                        </p>
+                        <ul class="p-tags">
+                            <li>Game Logic</li><li>State Management</li>
+                        </ul>
+                         <div class="p-link">AI Experiment</div>
+                         <a href="https://github.com/chirag-parmar16/pokemon-Game" target="_blank" class="btn btn-sm btn-line">Source Code</a>
+                    </div>
+                    <div class="project-visual visual-pokemon">
+                        <div class="mockup-window">
+                            <div class="window-header"><span class="dots"></span></div>
+                            <div class="window-body">
+                                <img src="assets/images/pokemon.png" alt="Pokemon Simulation" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 6: Request (Student Feedback) -->
+                <article class="project-feature reverse" data-category="fullstack">
+                    <div class="project-text">
+                        <span class="p-num">06</span>
+                        <h3 class="p-title">Student Feedback System</h3>
+                        <p class="p-desc">
+                            My first full-stack architecture built with <strong>Pure PHP</strong>. A robust feedback management platform featuring anonymous submissions, admin moderation, and statistical reporting without reliance on frameworks.
+                        </p>
+                        <ul class="p-tags">
+                            <li>Pure PHP</li><li>Core Logic</li>
+                        </ul>
+                         <div class="p-link">Full Stack Project</div>
+                         <a href="https://github.com/chirag-parmar16/Feedback-management-system" target="_blank" class="btn btn-sm btn-line">Source Code</a>
+                    </div>
+                    <div class="project-visual visual-feedback">
+                        <div class="mockup-window">
+                            <div class="window-header"><span class="dots"></span></div>
+                            <div class="window-body">
+                                <img src="assets/images/Student-feedback-system.png" alt="Student Feedback System" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 7: Spotify Clone -->
+                <article class="project-feature" data-category="frontend">
+                    <div class="project-text">
+                        <span class="p-num">07</span>
+                        <h3 class="p-title">Spotify Clone</h3>
+                        <p class="p-desc">
+                            A pixel-perfect recreation of the web player interface. Features playback controls, playlist management, and responsive layout adaptation.
+                        </p>
+                        <ul class="p-tags">
+                            <li>Frontend Clone</li><li>UI/UX</li>
+                        </ul>
+                         <div class="p-link">Frontend Project</div>
+                         <a href="https://github.com/chirag-parmar16/spotify" target="_blank" class="btn btn-sm btn-line">Source Code</a>
+                    </div>
+                    <div class="project-visual visual-spotify">
+                        <div class="mockup-window">
+                            <div class="window-header"><span class="dots"></span></div>
+                            <div class="window-body">
+                                <img src="assets/images/spotify.png" alt="Spotify Clone" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 8: YouTube Clone (Reverse) -->
+                <article class="project-feature reverse" data-category="frontend">
+                    <div class="project-text">
+                        <span class="p-num">08</span>
+                        <h3 class="p-title">YouTube Clone</h3>
+                        <p class="p-desc">
+                            Video streaming platform simulation. Implements grid layouts for video feeds, sidebar navigation, and immersive video player styling.
+                        </p>
+                        <ul class="p-tags">
+                            <li>Content Grid</li><li>Responsive Design</li>
+                        </ul>
+                         <div class="p-link">Frontend Project</div>
+                         <a href="https://github.com/chirag-parmar16/youtube-clone" target="_blank" class="btn btn-sm btn-line">Source Code</a>
+                    </div>
+                    <div class="project-visual visual-youtube">
+                        <div class="mockup-window">
+                            <div class="window-header"><span class="dots"></span></div>
+                            <div class="window-body">
+                                <img src="assets/images/Youtube.png" alt="YouTube Clone" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 9: Virtual Piano -->
+                <article class="project-feature" data-category="ai">
+                    <div class="project-text">
+                        <span class="p-num">09</span>
+                        <h3 class="p-title">Virtual Piano</h3>
+                        <p class="p-desc">
+                            Interactive browser-based instrument. Maps keyboard events to realistic audio samples, featuring multi-key support and visual feedback.
+                        </p>
+                        <ul class="p-tags">
+                            <li>JavaScript Audio</li><li>Event Handling</li>
+                        </ul>
+                         <div class="p-link">AI Experiment</div>
+                         <a href="https://github.com/chirag-parmar16/Piano" target="_blank" class="btn btn-sm btn-line">Source Code</a>
+                    </div>
+                    <div class="project-visual visual-piano">
+                        <div class="mockup-window">
+                            <div class="window-header"><span class="dots"></span></div>
+                            <div class="window-body">
+                                <img src="assets/images/piano.png" alt="Virtual Piano" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 10: Silent Listener (Reverse) -->
+                <article class="project-feature reverse" data-category="ai">
+                    <div class="project-text">
+                        <span class="p-num">10</span>
+                        <h3 class="p-title">Silent Listener</h3>
+                        <p class="p-desc">
+                            A stealthy background utility for monitoring system events. Demonstrates low-level system interaction and efficient resource management.
+                        </p>
+                        <ul class="p-tags">
+                            <li>System Utility</li><li>Background Process</li>
+                        </ul>
+                         <div class="p-link">AI Experiment</div>
+                         <a href="https://github.com/chirag-parmar16/silent-Listener" target="_blank" class="btn btn-sm btn-line">Source Code</a>
+                    </div>
+                    <div class="project-visual visual-listener">
+                        <div class="mockup-window">
+                            <div class="window-header"><span class="dots"></span></div>
+                            <div class="window-body">
+                                <img src="assets/images/silent-listener.png" alt="Silent Listener" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- About & Experience -->
+        <section class="about-section" id="about">
+            <div class="container about-grid">
+                <div class="about-info">
+                    <h2 class="section-heading">The Engineer</h2>
+                    <p class="bio-lead">
+                        I don't just write code; I design systems.
+                    </p>
+                    <p class="bio-body">
+                        Passionate BCA student actively learning web technologies and modern development practices. Seeking opportunities to apply academic knowledge in real-world projects while continuously improving practical development skills through hands-on work and team collaboration.
+                    </p>
+                    
+                    <div class="stack-box" id="skills">
+                        <div class="stack-col">
+                            <h4>Core Stack</h4>
+                            <ul>
+                                <li>PHP / Laravel</li>
+                                <li>MySQL / SQL</li>
+                                <li>JavaScript (Vanilla)</li>
+                                <li>HTML5 / CSS3</li>
+                                <li>React.js / Node.js (Basic)</li>
+                            </ul>
+                        </div>
+                        <div class="stack-col">
+                            <h4>Infrastructure</h4>
+                            <ul>
+                                <li>AWS EC2 / Linux</li>
+                                <li>Nginx / PM2</li>
+                                <li>Git / GitHub</li>
+                                <li>AI Prompt Engineering</li>
+                                <li>Responsive UI/UX</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-timeline" id="experience">
+                    <h2 class="section-heading">Timeline</h2>
+                     <div class="timeline-item">
+                        <span class="t-year">2026</span>
+                        <div class="t-info">
+                            <h5>BCA Degree (Pursuing)</h5>
+                            <span class="t-org">ITM SLS Baroda University</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="t-year">2025</span>
+                        <div class="t-info">
+                            <h5>Web Developer Intern</h5>
+                            <span class="t-org">Aarna Technolabs</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="t-year">2024</span>
+                        <div class="t-info">
+                            <h5>Web Developer Intern</h5>
+                            <span class="t-org">acedEasy</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="t-year">2023</span>
+                        <div class="t-info">
+                            <h5>Higher Secondary (HSC)</h5>
+                            <span class="t-org">SSV2 (Commerce)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Social Proof: LinkedIn Insights -->
+        
+
+        <!-- Footer -->
+        <!-- Footer -->
+        <footer class="footer" id="contact">
+            <div class="container">
+                <div class="footer-layout">
+                    <!-- Left: Text -->
+                    <div class="footer-left">
+                        <h2 class="footer-cta">Ready to build<br>something<br>extraordinary?</h2>
+                        <div class="footer-links">
+                            <a href="mailto:parmarchirag161005@gmail.com" class="f-link">parmarchirag161005@gmail.com</a>
+                            <a href="https://www.linkedin.com/in/chirag-parmar-6742a6288/" target="_blank" class="f-link">LinkedIn</a>
+                            <a href="https://github.com/chirag-parmar16/" target="_blank" class="f-link">GitHub</a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Visual -->
+                    <div class="footer-right">
+                        <div class="project-visual visual-contact">
+                            <div class="mockup-window">
+                                <div class="window-header"><span class="dots"></span></div>
+                                <div class="window-body">
+                                    <p style="font-size: 1.5rem; font-weight: 600; color: inherit;">Connect with me</p>
+                                    <p class="blink" style="margin-top: 10px;">_</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="fb-left">
+                        <span>© 2026 Chirag Parmar</span>
+                    </div>
+                    <div class="fb-right">
+                        <span>Vadodara, India</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
