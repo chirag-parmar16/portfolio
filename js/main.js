@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Cursor Trail & Click Effect ---
     // Only on Desktop
-    if (!window.matchMedia("(max-width: 900px)").matches) {
+    if (!window.matchMedia("(max-width: 900px)").matches) { 
         // Create Elements
         const cursorDot = document.createElement('div');
         cursorDot.classList.add('cursor-dot');
