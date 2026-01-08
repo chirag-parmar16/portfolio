@@ -165,52 +165,61 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Project Filtering ---
+    // --- Project Filtering ---
     const filterBtns = document.querySelectorAll('.tab-btn');
     const projects = document.querySelectorAll('.project-feature');
 
+    // Refactored: Separate filter logic from event handling
+    function updateProjectFilter(btn, shouldScroll = true) {
+        // Remove active class from all
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add to clicked
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        let visibleCount = 0;
+        projects.forEach(project => {
+            if (filterValue === 'all' || project.getAttribute('data-category') === filterValue) {
+                project.style.display = 'flex';
+                // Update number
+                visibleCount++;
+                const num = project.querySelector('.p-num');
+                if (num) num.textContent = visibleCount < 10 ? '0' + visibleCount : visibleCount;
+
+                // Enforce Alternating Layout (Zig-Zag)
+                if (visibleCount % 2 === 0) {
+                    project.classList.add('reverse');
+                } else {
+                    project.classList.remove('reverse');
+                }
+
+                // Re-trigger GSAP animation or reset opacity for smoother feel
+                gsap.fromTo(project, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 });
+            } else {
+                project.style.display = 'none';
+            }
+        });
+
+        // Re-refresh ScrollTrigger if needed, but display changes might handle it.
+        ScrollTrigger.refresh();
+
+        // Scroll to start of projects to avoid "merging" or layout jumps
+        // ONLY if triggered by user interaction (click), not on initial load
+        if (shouldScroll) {
+            gsap.to(window, { duration: 0.5, scrollTo: { y: "#section-heading", offsetY: 80 } });
+        }
+    }
+
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active class from all
-            filterBtns.forEach(b => b.classList.remove('active'));
-            // Add to clicked
-            btn.classList.add('active');
-
-            const filterValue = btn.getAttribute('data-filter');
-
-            let visibleCount = 0;
-            projects.forEach(project => {
-                if (filterValue === 'all' || project.getAttribute('data-category') === filterValue) {
-                    project.style.display = 'flex';
-                    // Update number
-                    visibleCount++;
-                    const num = project.querySelector('.p-num');
-                    if (num) num.textContent = visibleCount < 10 ? '0' + visibleCount : visibleCount;
-
-                    // Enforce Alternating Layout (Zig-Zag)
-                    if (visibleCount % 2 === 0) {
-                        project.classList.add('reverse');
-                    } else {
-                        project.classList.remove('reverse');
-                    }
-
-                    // Re-trigger GSAP animation or reset opacity for smoother feel
-                    gsap.fromTo(project, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 });
-                } else {
-                    project.style.display = 'none';
-                }
-            });
-
-            // Re-refresh ScrollTrigger if needed, but display changes might handle it.
-            ScrollTrigger.refresh();
-
-            // Scroll to start of projects to avoid "merging" or layout jumps
-            gsap.to(window, { duration: 0.5, scrollTo: { y: "#section-heading", offsetY: 80 } });
+            updateProjectFilter(btn, true); // true = scroll to section
         });
     });
 
-    // Trigger initial click on active tab (Full Stack) to set correct numbering/view
+    // Trigger initial state without scrolling
     const activeBtn = document.querySelector('.tab-btn.active');
-    if (activeBtn) activeBtn.click();
+    if (activeBtn) updateProjectFilter(activeBtn, false); // false = do not scroll
 
     // --- Hover Tilt for Mockups ---
     const features = document.querySelectorAll('.project-feature');
@@ -261,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Cursor Trail & Click Effect ---
     // Only on Desktop
-    if (!window.matchMedia("(max-width: 900px)").matches) { 
+    if (!window.matchMedia("(max-width: 900px)").matches) {
         // Create Elements
         const cursorDot = document.createElement('div');
         cursorDot.classList.add('cursor-dot');
