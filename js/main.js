@@ -129,15 +129,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Hero Parallax
-        gsap.to('.hero-title', {
-            scrollTrigger: {
-                trigger: '.hero-section',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true
-            },
-            y: 100, opacity: 0.5
-        });
+        // Hero Parallax (Desktop Only)
+        if (window.matchMedia("(min-width: 901px)").matches) {
+            gsap.to('.hero-title', {
+                scrollTrigger: {
+                    trigger: '.hero-section',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                },
+                y: 100, opacity: 0.5
+            });
+        }
 
         // Project Reveals
         gsap.utils.toArray('.project-feature').forEach(proj => {
