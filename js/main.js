@@ -7,27 +7,126 @@ gsap.registerPlugin(ScrollTrigger);
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Boot Sequence ---
+    // --- Boot Sequence ---
     const loader = document.getElementById('terminalLoader');
-    const text = document.getElementById('terminalText');
-    const message = "Initializing_Digital_Reality...";
-    let i = 0;
 
-    function typeWriter() {
-        if(i < message.length) {
-            text.innerHTML += message.charAt(i);
-            i++;
-            setTimeout(typeWriter, 50);
-        } else {
-             gsap.to(loader, {
-                yPercent: -100, duration: 1, ease: "power4.inOut", delay: 0.5
-             });
-             initSite();
-        }
+    function initLoader() {
+        gsap.registerPlugin(TextPlugin);
+
+        // 1. System Data
+        const now = new Date();
+        document.getElementById('loadDate').textContent = now.toLocaleDateString();
+        document.getElementById('loadTime').textContent = now.toLocaleTimeString();
+        document.getElementById('loadRes').textContent = `${window.screen.width}x${window.screen.height}`;
+        document.getElementById('loadLang').textContent = navigator.language;
+        
+        // Browser Detect
+        const agent = navigator.userAgent;
+        let browser = "Unknown";
+        if(agent.indexOf("Chrome") > -1) browser = "Chrome";
+        else if(agent.indexOf("Safari") > -1) browser = "Safari";
+        else if(agent.indexOf("Firefox") > -1) browser = "Firefox";
+        document.getElementById('loadBrowser').textContent = browser;
+
+        // --- Scramble Effects ---
+        // Decrypting the headers
+        gsap.to("#headerTitle", { 
+            duration: 2, 
+            text: { value: "$ CONSOLE SETUP", scrambleText: { chars: "upperCase", speed: 0.3 } } 
+        });
+        gsap.to("#headerRight", { 
+            duration: 2, 
+            text: { value: "$ PARSING DATA", scrambleText: { chars: "binary", speed: 0.3 } } 
+        });
+
+        // 2. Sequence Logs
+        const seqContainer = document.querySelector('.sequence-logs');
+        const tasks = ["Configure network interfaces", "Configure link aggregation", "Configure VLAN interface", "Configure default route", "Reboot", "Shut Down"];
+
+        // 3. Animation Timeline
+        const tl = gsap.timeline({
+            onComplete: () => {
+                gsap.to(loader, { yPercent: -100, duration: 1, ease: "power4.inOut", delay: 0.5 });
+                initSite();
+            }
+        });
+
+        // Initial Logs
+        tl.from(".col-left .log-group:first-child .log-line", { opacity: 0, x: -20, duration: 0.5, stagger: 0.1 });
+        tl.from(".col-right .log-line", { opacity: 0, x: 20, duration: 0.5, stagger: 0.1 }, "<");
+
+        // Sequence Tasks
+        tasks.forEach((task, i) => {
+            const div = document.createElement('div');
+            div.className = 'log-line';
+            div.innerHTML = `> ${String(i+1).padStart(3, '0')} &nbsp;&nbsp; ${task}`;
+            div.style.opacity = 0;
+            seqContainer.appendChild(div);
+            tl.to(div, { opacity: 1, duration: 0.1 }, ">0.1");
+        });
+
+        // --- Wavy Text ---
+        // Split welcome text for wave animation
+        const welcomeTitle = document.querySelector('.final-msg .log-title');
+        // Simple manual split to avoid Splitting.js dependency
+        const chars = welcomeTitle.innerText.split("").map(char => `<span style="display:inline-block">${char === " " ? "&nbsp;" : char}</span>`).join("");
+        welcomeTitle.innerHTML = chars;
+
+        tl.from(".final-msg", { opacity: 0, duration: 0.1 });
+        tl.from(".final-msg .log-title span", { 
+            y: 10, opacity: 0, duration: 0.5, stagger: 0.05, ease: "back.out"
+        });
+        
+        // Continuous Wave
+        gsap.to(".final-msg .log-title span", {
+            y: -5, duration: 0.5, stagger: { each: 0.05, repeat: -1, yoyo: true }, ease: "sine.inOut"
+        });
+
+        // Counter Animation
+        const countObj = { val: 0 };
+        tl.to(countObj, {
+            val: 100, duration: 1.5, ease: "none",
+            onUpdate: () => document.getElementById('loadCount').textContent = Math.floor(countObj.val)
+        }, "<");
     }
-    setTimeout(typeWriter, 500);
+
+    initLoader();
 
     // --- Animations ---
     function initSite() {
+        // Mobile Navigation Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navRight = document.querySelector('.nav-right');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navRight.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+            });
+
+            // Smooth Scroll
+            gsap.registerPlugin(ScrollToPlugin);
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const targetId = link.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    // Close mobile menu first
+                    navRight.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    
+                    gsap.to(window, {
+                        duration: 1.5,
+                        scrollTo: { y: targetId, offsetY: 80 },
+                        ease: "power3.inOut"
+                    });
+                });
+            });
+        }
         
         // Hero Parallax
         gsap.to('.hero-title', {
@@ -141,32 +240,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Cursor Trail & Click Effect ---
-    // Create Elements
-    const cursorDot = document.createElement('div');
-    cursorDot.classList.add('cursor-dot');
-    const cursorOutline = document.createElement('div');
-    cursorOutline.classList.add('cursor-outline');
-    document.body.appendChild(cursorDot);
-    document.body.appendChild(cursorOutline);
+    // Only on Desktop
+    if (!window.matchMedia("(max-width: 900px)").matches) {
+        // Create Elements
+        const cursorDot = document.createElement('div');
+        cursorDot.classList.add('cursor-dot');
+        const cursorOutline = document.createElement('div');
+        cursorOutline.classList.add('cursor-outline');
+        document.body.appendChild(cursorDot);
+        document.body.appendChild(cursorOutline);
 
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
 
-        // Dot follows instantly
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
+            // Dot follows instantly
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
 
-        // Outline follows with slight lag (via CSS transition/animation or GSAP)
-        // Using animate for smooth trailing
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
-    });
+            // Outline follows with slight lag
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+    }
 
     // Click Ripple
     window.addEventListener('click', (e) => {
+        if (window.matchMedia("(max-width: 900px)").matches) return;
+
         const ripple = document.createElement('div');
         ripple.classList.add('click-ripple');
         document.body.appendChild(ripple);

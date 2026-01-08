@@ -16,10 +16,62 @@
 </head>
 <body>
     
-    <!-- Terminal Loader -->
+    <!-- Hacker Console Loader -->
     <div class="boot-screen" id="terminalLoader">
-        <div class="console">
-            <span class="cursor">></span> <span class="text" id="terminalText"></span>
+        <div class="console-container">
+            <div class="console-header">
+                <div class="header-left">
+                    <span class="win-dot dot-red"></span>
+                    <span class="win-dot dot-yellow"></span>
+                    <span class="win-dot dot-green"></span>
+                    <span class="header-title" id="headerTitle">$ CONSOLE SETUP</span>
+                </div>
+                <div class="header-right" id="headerRight">$ PARSING DATA</div>
+            </div>
+            
+            <div class="console-grid">
+                <!-- Left Column -->
+                <div class="col-left">
+                    <div class="log-group">
+                        <div class="log-line">> Loading site : In progress</div>
+                        <div class="log-line">> Server IP address : {10.100.40.11}</div>
+                        <div class="log-line">> Protocol version : {HTTP/1.1}</div>
+                    </div>
+
+                    <div class="log-group sequence-logs">
+                        <!-- JS will inject lines here -->
+                    </div>
+
+                    <div class="log-group final-msg">
+                        <div class="log-title">$ WELCOME TO PORTFOLIO</div>
+                        <div class="log-line">> Type : {Full Stack & Blockchain Developer}</div>
+                        <div class="log-line">> Services : {Web Development, Smart Contracts, DApps, Backend APIs}</div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="col-right">
+                    <div class="log-group">
+                        <div class="log-line">> Date : {<span id="loadDate">01/01/26</span>}</div>
+                        <div class="log-line">> Hour : {<span id="loadTime">00:00:00</span>}</div>
+                        <div class="log-line">> Loading projects : {<span id="loadCount">0</span>/100}</div>
+                    </div>
+                    
+                    <div class="log-group system-info">
+                        <div class="log-line">> Display : <span id="loadRes">1920x1080</span></div>
+                        <div class="log-line">> Browser : <span id="loadBrowser">Chrome</span></div>
+                        <div class="log-line">> Language : <span id="loadLang">en-US</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="console-footer">
+                <div class="footer-status">terminal@portfolio:~$ <span class="blink">_</span></div>
+                <div class="audio-wave">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -31,6 +83,11 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="brand">CP<span class="dot">_</span></a>
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
             <div class="nav-right">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#section-heading" class="nav-link">Projects</a>
@@ -455,6 +512,8 @@
     <!-- JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
