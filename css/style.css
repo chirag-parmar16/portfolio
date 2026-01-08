@@ -583,4 +583,13 @@ ul { list-style: none; }
     
     /* Footer */
     .console-footer { margin-top: 20px; padding-top: 10px; }
+    
+    /* Hero Fixes (Consolidated) */
+    .hero-title { 
+        font-size: 2rem !important; /* Force smaller size */
+        line-height: 1.3 !important; 
+        margin-bottom: 24px; padding-top: 20px; 
+    }
+    .hero-desc { font-size: 1rem !important; margin-bottom: 32px; }
+    .label-pill { margin-bottom: 16px; font-size: 0.75rem; }
 }
