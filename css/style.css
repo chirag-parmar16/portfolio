@@ -133,6 +133,7 @@ ul { list-style: none; }
     background: linear-gradient(135deg, var(--text-main), var(--text-sec));
     background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
+
 .hero-desc {
     font-size: 1.5rem; color: var(--text-sec); max-width: 650px; margin-bottom: 48px;
     font-weight: 300;
