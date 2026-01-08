@@ -19,24 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('loadTime').textContent = now.toLocaleTimeString();
         document.getElementById('loadRes').textContent = `${window.screen.width}x${window.screen.height}`;
         document.getElementById('loadLang').textContent = navigator.language;
-        
+
         // Browser Detect
         const agent = navigator.userAgent;
         let browser = "Unknown";
-        if(agent.indexOf("Chrome") > -1) browser = "Chrome";
-        else if(agent.indexOf("Safari") > -1) browser = "Safari";
-        else if(agent.indexOf("Firefox") > -1) browser = "Firefox";
+        if (agent.indexOf("Chrome") > -1) browser = "Chrome";
+        else if (agent.indexOf("Safari") > -1) browser = "Safari";
+        else if (agent.indexOf("Firefox") > -1) browser = "Firefox";
         document.getElementById('loadBrowser').textContent = browser;
 
         // --- Scramble Effects ---
         // Decrypting the headers
-        gsap.to("#headerTitle", { 
-            duration: 2, 
-            text: { value: "$ CONSOLE SETUP", scrambleText: { chars: "upperCase", speed: 0.3 } } 
+        gsap.to("#headerTitle", {
+            duration: 2,
+            text: { value: "$ CONSOLE SETUP", scrambleText: { chars: "upperCase", speed: 0.3 } }
         });
-        gsap.to("#headerRight", { 
-            duration: 2, 
-            text: { value: "$ PARSING DATA", scrambleText: { chars: "binary", speed: 0.3 } } 
+        gsap.to("#headerRight", {
+            duration: 2,
+            text: { value: "$ PARSING DATA", scrambleText: { chars: "binary", speed: 0.3 } }
         });
 
         // 2. Sequence Logs
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tasks.forEach((task, i) => {
             const div = document.createElement('div');
             div.className = 'log-line';
-            div.innerHTML = `> ${String(i+1).padStart(3, '0')} &nbsp;&nbsp; ${task}`;
+            div.innerHTML = `> ${String(i + 1).padStart(3, '0')} &nbsp;&nbsp; ${task}`;
             div.style.opacity = 0;
             seqContainer.appendChild(div);
             tl.to(div, { opacity: 1, duration: 0.1 }, ">0.1");
@@ -73,10 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
         welcomeTitle.innerHTML = chars;
 
         tl.from(".final-msg", { opacity: 0, duration: 0.1 });
-        tl.from(".final-msg .log-title span", { 
+        tl.from(".final-msg .log-title span", {
             y: 10, opacity: 0, duration: 0.5, stagger: 0.05, ease: "back.out"
         });
-        
+
         // Continuous Wave
         gsap.to(".final-msg .log-title span", {
             y: -5, duration: 0.5, stagger: { each: 0.05, repeat: -1, yoyo: true }, ease: "sine.inOut"
@@ -107,18 +107,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Smooth Scroll
             gsap.registerPlugin(ScrollToPlugin);
-            
+
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    
+
                     const targetId = link.getAttribute('href');
-                    if(targetId === '#') return;
-                    
+                    if (targetId === '#') return;
+
                     // Close mobile menu first
                     navRight.classList.remove('active');
                     mobileToggle.classList.remove('active');
-                    
+
                     gsap.to(window, {
                         duration: 1.5,
                         scrollTo: { y: targetId, offsetY: 80 },
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         }
-        
+
         // Hero Parallax
         gsap.to('.hero-title', {
             scrollTrigger: {
@@ -181,8 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Update number
                     visibleCount++;
                     const num = project.querySelector('.p-num');
-                    if(num) num.textContent = visibleCount < 10 ? '0' + visibleCount : visibleCount;
-                    
+                    if (num) num.textContent = visibleCount < 10 ? '0' + visibleCount : visibleCount;
+
                     // Enforce Alternating Layout (Zig-Zag)
                     if (visibleCount % 2 === 0) {
                         project.classList.add('reverse');
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     project.style.display = 'none';
                 }
             });
-            
+
             // Re-refresh ScrollTrigger if needed, but display changes might handle it.
             ScrollTrigger.refresh();
         });
@@ -204,13 +204,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Trigger initial click on active tab (Full Stack) to set correct numbering/view
     const activeBtn = document.querySelector('.tab-btn.active');
-    if(activeBtn) activeBtn.click();
+    if (activeBtn) activeBtn.click();
 
     // --- Hover Tilt for Mockups ---
     const features = document.querySelectorAll('.project-feature');
     features.forEach(feature => {
         const mockup = feature.querySelector('.mockup-window');
-        
+
         feature.addEventListener('mousemove', (e) => {
             // Disabled on mobile/touch
             if (window.matchMedia("(max-width: 900px)").matches) return;
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = feature.getBoundingClientRect();
             const x = (e.clientX - rect.left) / rect.width - 0.5;
             const y = (e.clientY - rect.top) / rect.height - 0.5;
-            
+
             gsap.to(mockup, {
                 rotationY: x * 10,
                 rotationX: -y * 10,
@@ -227,16 +227,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         feature.addEventListener('mouseleave', () => {
-             // Reset to default css transform (handled by class, but let's clear inline style)
-             // On mobile we don't reset because we don't tilt
-             if (window.matchMedia("(max-width: 900px)").matches) return;
+            // Reset to default css transform (handled by class, but let's clear inline style)
+            // On mobile we don't reset because we don't tilt
+            if (window.matchMedia("(max-width: 900px)").matches) return;
 
-             gsap.to(mockup, {
+            gsap.to(mockup, {
                 rotationY: feature.classList.contains('reverse') ? 10 : -10,
                 rotationX: 5,
                 duration: 0.5
-             });
+            });
         });
+    });
+
+    // --- Identity Hero Animation ---
+    const roles = ["Full Stack Engineer", "AI Enthusiast"];
+    let roleTl = gsap.timeline({ repeat: -1 });
+    roles.forEach(role => {
+        roleTl.to("#dynamicRole", { duration: 1, text: role, ease: "none" })
+            .to({}, { duration: 2 }) // Wait
+            .to("#dynamicRole", { duration: 0.5, text: "", ease: "none" });
     });
 
     // --- Cursor Trail & Click Effect ---
@@ -273,11 +282,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const ripple = document.createElement('div');
         ripple.classList.add('click-ripple');
         document.body.appendChild(ripple);
-        
+
         const size = 100;
         ripple.style.width = ripple.style.height = `${size}px`;
-        ripple.style.left = `${e.clientX - size/2}px`;
-        ripple.style.top = `${e.clientY - size/2}px`;
+        ripple.style.left = `${e.clientX - size / 2}px`;
+        ripple.style.top = `${e.clientY - size / 2}px`;
 
         gsap.to(ripple, {
             scale: 2, opacity: 0, duration: 0.6, onComplete: () => ripple.remove()
