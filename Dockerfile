@@ -1,10 +1,11 @@
 FROM nginx:alpine
 
-# Remove default nginx files
+RUN rm /etc/nginx/conf.d/default.conf
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy your static website
 COPY . /usr/share/nginx/html
 
-# Run nginx in foreground
 CMD ["nginx", "-g", "daemon off;"]
