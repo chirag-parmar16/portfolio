@@ -1,6 +1,0 @@
-.git
-.gitignore
-autoflow.config.json
-Dockerfile
-nginx.conf
-node_modules
