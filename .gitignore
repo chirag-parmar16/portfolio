@@ -1,2 +1,5 @@
 autoflow.config.json
 node_modules
+
+# AutoFlow Secrets
+.env
